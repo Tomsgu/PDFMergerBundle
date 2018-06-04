@@ -13,13 +13,6 @@ use Tomsgu\PdfMergerBundle\DependencyInjection\TomsguPdfMergerExtension;
  */
 class TomsguPdfMergerExtensionTest extends TestCase
 {
-    protected $configuration;
-
-    public function tearDown()
-    {
-        $this->configuration = null;
-    }
-
     public function testHasServicesConfigured()
     {
         $configuration = new ContainerBuilder();
