@@ -14,7 +14,7 @@
   "require": {
     "php": "^7.2",
     "symfony/framework-bundle": "^4.0",
-    "tomsgu/pdf-merger": "dev-master"
+    "tomsgu/pdf-merger": "^0.1"
   },
   "require-dev": {
     "symfony/phpunit-bridge": "^4.0",
