@@ -1,0 +1,42 @@
+{
+  "name": "tomsgu/pdf-merger-bundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "keywords": [
+    "pdf merger bundle merge"
+  ],
+  "authors": [
+    {
+      "name": "Tomas Jakl",
+      "email": "tomasjakll@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "symfony/framework-bundle": "^4.0",
+    "tomsgu/pdf-merger": "dev-master"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^4.0",
+    "phpunit/phpunit": "^6.5"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Tomsgu\\PdfMergerBundle\\": "src/"
+    },
+    "exclude-from-classmap": [
+      "/Tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tomsgu\\PdfMergerBundle\\Tests\\": "tests/"
+    }
+  }
+}
