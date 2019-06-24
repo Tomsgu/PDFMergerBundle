@@ -16,8 +16,12 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('tomsgu_pdf_merger');
+        $treeBuilder = new TreeBuilder('tomsgu_pdf_merger');
+
+        // BC for symfony < 4.3
+        if (method_exists($treeBuilder, 'getRootNode') === false) {
+            $treeBuilder->root('tomsgu_pdf_merger');
+        }
 
         return $treeBuilder;
     }
