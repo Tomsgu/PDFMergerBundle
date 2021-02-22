@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tomsgu\PdfMergerBundle\Tests\DependencyInjection;
 
-use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Tomsgu\PdfMergerBundle\DependencyInjection\TomsguPdfMergerExtension;
 

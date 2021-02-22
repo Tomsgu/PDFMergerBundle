@@ -17,8 +17,7 @@
     "tomsgu/pdf-merger": "^0.1"
   },
   "require-dev": {
-    "symfony/phpunit-bridge": "^4.0",
-    "phpunit/phpunit": "^6.5"
+    "phpunit/phpunit": "^9.0"
   },
   "config": {
     "preferred-install": {
