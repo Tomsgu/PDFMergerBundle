@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.1/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
-         bootstrap="vendor/autoload.php"
->
-    <testsuites>
-        <testsuite name="PdfMergerBundle test suite">
-            <directory suffix="Test.php">./tests</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./src/Resources</directory>
-                <directory>./tests</directory>
-                <directory>./vendor</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" backupGlobals="false" colors="true" bootstrap="vendor/autoload.php" cacheDirectory=".phpunit.cache">
+  <coverage>
+    <include>
+      <directory>./</directory>
+    </include>
+    <exclude>
+      <directory>./src/Resources</directory>
+      <directory>./tests</directory>
+      <directory>./vendor</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="PdfMergerBundle test suite">
+      <directory suffix="Test.php">./tests</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
