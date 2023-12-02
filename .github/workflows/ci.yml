@@ -51,8 +51,8 @@ jobs:
             -   name: Install dependencies
                 run: composer update --ansi --no-progress --prefer-dist ${{ matrix.composer_flags }}
 
-#            -   name: Install PHPUnit
-#                run: vendor/bin/simple-phpunit install
+            -   name: Install PHPUnit
+                run: vendor/bin/simple-phpunit install
 
             -   name: Run tests
                 run: vendor/bin/phpunit -v --colors=always
