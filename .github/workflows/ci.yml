@@ -55,4 +55,4 @@ jobs:
                 run: vendor/bin/simple-phpunit install
 
             -   name: Run tests
-                run: vendor/bin/phpunit -v --colors=always
+                run: vendor/bin/simple-phpunit -v --colors=always
