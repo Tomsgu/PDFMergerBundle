@@ -1,5 +1,6 @@
 {
   "name": "tomsgu/pdf-merger-bundle",
+  "description": "Symfony bundle that integrates tomsgu/pdf-merge lib.",
   "type": "symfony-bundle",
   "license": "MIT",
   "keywords": [
