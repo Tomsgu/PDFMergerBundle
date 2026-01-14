@@ -22,77 +22,37 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php:
-                    [
-                        "7.2",
-                        "7.3",
-                        "7.4",
-                        "8.0",
-                        "8.1",
-                        "8.2",
-                        "8.3",
-                        "8.4",
-                        "8.5",
-                    ]
-                symfony: ["4.4.*", "5.4.*", "6.4.*", "7.4.*", "8.0.*"]
-                name_suffix: [""]
-                stability: ["stable"]
-                composer_flags: [""]
+                php: [ '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5' ]
+                name_suffix: ['']
+                stability: ['stable']
+                composer_flags: ['']
                 include:
-                    - php: "7.2"
-                      name_suffix: " (lowest deps)"
-                      stability: "stable"
-                      composer_flags: "--prefer-lowest"
-                    - php: "8.5"
-                      name_suffix: " (dev deps)"
-                      stability: "dev"
-                      composer_flags: ""
-
-                exclude:
-                    # Symfony 4.4 doesn't support PHP 8.1+
-                    - { php: "8.1", symfony: "4.4.*" }
-                    - { php: "8.2", symfony: "4.4.*" }
-                    - { php: "8.3", symfony: "4.4.*" }
-                    - { php: "8.4", symfony: "4.4.*" }
-                    - { php: "8.5", symfony: "4.4.*" }
-
-                    # Symfony 6.4 requires PHP 8.1+
-                    - { php: "7.2", symfony: "6.4.*" }
-                    - { php: "7.3", symfony: "6.4.*" }
-                    - { php: "7.4", symfony: "6.4.*" }
-                    - { php: "8.0", symfony: "6.4.*" }
-
-                    # Symfony 7.4 requires PHP 8.2+
-                    - { php: "7.2", symfony: "7.4.*" }
-                    - { php: "7.3", symfony: "7.4.*" }
-                    - { php: "7.4", symfony: "7.4.*" }
-                    - { php: "8.0", symfony: "7.4.*" }
-                    - { php: "8.1", symfony: "7.4.*" }
-
-                    # Symfony 8.0 requires PHP 8.2+
-                    - { php: "7.2", symfony: "8.0.*" }
-                    - { php: "7.3", symfony: "8.0.*" }
-                    - { php: "7.4", symfony: "8.0.*" }
-                    - { php: "8.0", symfony: "8.0.*" }
-                    - { php: "8.1", symfony: "8.0.*" }
+                    - php: '7.2'
+                      name_suffix: ' (lowest deps)'
+                      stability: 'stable'
+                      composer_flags: '--prefer-lowest'
+                    - php: '8.5'
+                      name_suffix: ' (dev deps)'
+                      stability: 'dev'
+                      composer_flags: ''
 
         steps:
-            - uses: actions/checkout@v3
+            -   uses: actions/checkout@v3
 
-            - uses: shivammathur/setup-php@v2
-              with:
-                  coverage: "none"
-                  php-version: "${{ matrix.php }}"
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    coverage: "none"
+                    php-version: "${{ matrix.php }}"
 
-            - name: Configure stability
-              if: "matrix.stability != 'stable'"
-              run: composer config minimum-stability ${{ matrix.stability }}
+            -   name: Configure stability
+                if: "matrix.stability != 'stable'"
+                run: composer config minimum-stability ${{ matrix.stability }}
 
-            - name: Install dependencies
-              run: composer update --ansi --no-progress --prefer-dist ${{ matrix.composer_flags }}
+            -   name: Install dependencies
+                run: composer update --ansi --no-progress --prefer-dist ${{ matrix.composer_flags }}
 
-            - name: Install PHPUnit
-              run: vendor/bin/simple-phpunit install
+            -   name: Install PHPUnit
+                run: vendor/bin/simple-phpunit install
 
-            - name: Run tests
-              run: vendor/bin/simple-phpunit -v --colors=always
+            -   name: Run tests
+                run: vendor/bin/simple-phpunit -v --colors=always
