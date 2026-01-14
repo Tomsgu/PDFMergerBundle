@@ -23,11 +23,13 @@ class TomsguPdfMergerExtension extends Extension
     {
         $processor = new Processor();
         $configuration = new Configuration();
-        $loader = new Loader\XmlFileLoader($container,
-            new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\PhpFileLoader(
+            $container,
+            new FileLocator(__DIR__ . '/../Resources/config')
+        );
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $loader->load('pdf_merger.xml');
+        $loader->load('pdf_merger.php');
         $container->setAlias('Tomsgu\PdfMerger\PdfMerger', new Alias('tomsgu_pdf_merger.pdf_merger', false));
     }
 }
